@@ -28,9 +28,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'DEVELOPMENT' is os.environ
+DEBUG = 'DEVELOPMENT' in os.environ
+DEBUG = True
 
 ALLOWED_HOSTS = ['boutique-ado-mm.herokuapp.com', 'localhost']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-martiless-boutiqueadowt-dv58e3clx5s.ws-eu64.gitpod.io',
+    'https://boutique-ado-mm.herokuapp.com'
+]
 
 
 # Application definition
@@ -187,7 +193,7 @@ if 'USE_AWS' in os.environ:
         'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
         'CacheControl': 'max-age=94608000',
     }
-    
+
     # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'boutique-ado-wt'
     AWS_S3_REGION_NAME = 'eu-west-1'
